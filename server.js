@@ -5,17 +5,36 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const passport = require('passport');
+
 const connectDB = require('./config/db');
 
 // Getting api
 const decks = require('./api/routes/decks');
+const users = require('./api/routes/users');
 
 const app = express();
 
 // Log if in development
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
+// set up passport middleware
+app.use(passport.initialize());
+
 app.use(bodyParser.json());
+
+// // Allow CORS
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header(
+//         'Access-Control-Allow-Headers',
+//         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+//     );
+//     if (req === 'OPTIONS') {
+//         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+//         return res.status(200).json({}); // just if the browser asks what options are allowed
+//     }
+// })
 
 
 // Connect to database
@@ -23,6 +42,7 @@ connectDB();
 
 // Tell app to use api
 app.use('/api/decks', decks);
+app.use('/api/users', users);
 
 // Error handling
 app.use((req, res, next) => {
