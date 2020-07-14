@@ -1,0 +1,116 @@
+:root {
+    --bg: #F9F9F9;
+    --bg-accent: #E4E4E4;
+    --text-color: #3A3A3A;
+    --flashcard-width: 40vw;
+    --animation-speed: 500ms;
+}
+
+body {
+    background-color: var(--bg);
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left:  auto;
+
+    max-width: 50vw; /* 2 */
+
+    padding-right: 10px; /* 3 */
+    padding-left:  10px; /* 3 */
+}
+
+.flashcard {
+    background-color: #FFFFFF;
+    width: var(--flashcard-width);
+    height: calc(var(--flashcard-width) * 0.5);
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.progress-bar {
+    background-color: var(--bg-accent);
+    height: 8px;
+    width: calc(var(--flashcard-width) * 0.8);
+    border-radius: 4px;
+    margin: 20px;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.inner-bar {
+    background-color: #3A3A3A;
+    /*height: 100%;*/
+    border-radius: inherit;
+    transition: width var(--animation-speed) ease-in;
+    height: inherit;
+    /*position: absolute;*/
+}
+
+#green-bar {
+    z-index: 3;
+    background-color: #7ACB5E;
+}
+
+#orange-bar {
+    z-index: 2;
+    background-color: #F1B458;
+    margin-top: -8px;
+}
+
+#red-bar {
+    z-index: 1;
+    background-color: #E88383;
+    margin-top: -8px;
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.button {
+    border: none;
+    border-radius: 8px;
+    height: calc(var(--flashcard-width) * 0.07);
+    width: calc(var(--flashcard-width) * 0.07);
+    margin: 10px;
+    margin-top: 20px;
+
+    transition: var(--animation-speed);
+}
+
+.button:hover {
+    filter: brightness(0.8);
+}
+
+.button:focus {
+    filter: brightness(0.8);
+    outline: none;
+}
+
+#green-button {
+    background-color: #7ACB5E;
+}
+
+#orange-button {
+    background-color: #F1B458;
+}
+
+#red-button {
+    background-color: #E88383;
+}
+
+
+
+
+

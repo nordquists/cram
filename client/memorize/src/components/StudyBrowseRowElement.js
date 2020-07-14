@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
 
-class StudyBrowseCardsRowElement extends Component {
+class StudyBrowseRowElement extends Component {
     render(){
         const deck = this.props.deck.name;
 
@@ -13,4 +13,4 @@ class StudyBrowseCardsRowElement extends Component {
     }
 }
 
-export default StudyBrowseCardsRowElement;
+export default StudyBrowseRowElement;
