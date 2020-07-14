@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import StudyBrowseCardsRowHeader from "./StudyBrowseCardsRowHeader"
-import StudyBrowseCardsRowElement from "./StudyBrowseCardsRowElement"
-import { Row } from 'reactstrap';
+import StudyBrowseRowHeader from "./StudyBrowseRowHeader"
+import StudyBrowseRowElement from "./StudyBrowseRowElement"
+import { Button, Col, Row } from 'reactstrap';
 
-class StudyBrowseCardsRow extends Component {
+class StudyBrowseRow extends Component {
     render() {
         const elements = [];
 
         const headerText = this.props.row.header
         this.props.row.decks.forEach((deck) => {
             elements.push(
-                <StudyBrowseCardsRowElement deck={deck} key={deck.name}/>
+                <StudyBrowseRowElement deck={deck} key={deck.name}/>
             );
         });
 
         return(
             <div>
-                <StudyBrowseCardsRowHeader text={headerText}/>
+                <Row>
+                    <Col><StudyBrowseRowHeader text={headerText}/></Col>
+                    <Col><Button color="link">View All</Button></Col>
+                </Row>
                 <Row>
                     {elements}
                 </Row>
@@ -25,4 +28,4 @@ class StudyBrowseCardsRow extends Component {
     }
 }
 
-export default StudyBrowseCardsRow;
+export default StudyBrowseRow;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import StudyBrowseCardsRow from './StudyBrowseCardsRow'
+import StudyBrowseRow from './StudyBrowseRow'
 import { Row } from 'reactstrap';
 
-class StudyBrowseCardsTable extends Component {
+class StudyBrowseTable extends Component {
     render() {
         const row1 = this.props.input.rows[0];
         return(
-            <StudyBrowseCardsRow row={row1}/>
+            <StudyBrowseRow row={row1}/>
         );
     }
 }
 
-export default StudyBrowseCardsTable;
+export default StudyBrowseTable;

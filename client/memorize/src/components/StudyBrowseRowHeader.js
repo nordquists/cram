@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class StudyBrowseCardsRowHeader extends Component {
+class StudyBrowseRowHeader extends Component {
     render() {
         const headerText = this.props.text
 
@@ -10,4 +10,4 @@ class StudyBrowseCardsRowHeader extends Component {
     }
 }
 
-export default StudyBrowseCardsRowHeader;
+export default StudyBrowseRowHeader;
