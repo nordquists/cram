@@ -27,10 +27,35 @@ body {
     width: var(--flashcard-width);
     height: calc(var(--flashcard-width) * 0.5);
     border-radius: 20px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px var(--flashcard-shadow, 4px) 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
     margin-right: auto;
     margin-left: auto;
+
+    transition: 200ms;
+    transition-timing-function: ease-out;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(var(--rotate-x, 0));
+}
+
+.flashcard.flipped {
+    --rotate-x: 180deg;
+    --flashcard-shadow: -4px
+}
+
+.flashcard .front,
+.flashcard .back {
+    position: absolute;
+    padding: 1rem;
+    backface-visibility: hidden;
+}
+
+.flashcard .back {
+    transform: rotateX(180deg);
 }
 
 .progress-bar {
@@ -80,7 +105,7 @@ body {
 
 .button {
     border: none;
-    border-radius: 8px;
+    border-radius: calc(var(--flashcard-width) * 0.07 * 0.3);
     height: calc(var(--flashcard-width) * 0.07);
     width: calc(var(--flashcard-width) * 0.07);
     margin: 10px;
@@ -100,6 +125,7 @@ body {
 
 #green-button {
     background-color: #7ACB5E;
+    margin-right: auto;
 }
 
 #orange-button {
@@ -108,6 +134,7 @@ body {
 
 #red-button {
     background-color: #E88383;
+    margin-left: auto;
 }
 
 
