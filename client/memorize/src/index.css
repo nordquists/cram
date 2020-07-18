@@ -1,9 +1,11 @@
 :root {
-    --bg: #F9F9F9;
+    --bg: #FFFFFF;
     --bg-accent: #E4E4E4;
     --text-color: #3A3A3A;
     --flashcard-width: 40vw;
     --animation-speed: 200ms;
+    font-family: 'Lato', sans-serif;
+    color: #3A3A3A;
 }
 
 body {
@@ -23,10 +25,10 @@ body {
 }
 
 .flashcard {
-    background-color: #FFFFFF;
+    background-color: #FFF;
     width: var(--flashcard-width);
     height: calc(var(--flashcard-width) * 0.5);
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0px var(--flashcard-shadow, 4px) 4px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: center;
@@ -138,6 +140,56 @@ body {
 }
 
 
+.browse .row {
+    display: flex;
+    flex-direction: row;
 
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
 
+.browse .row .buttons {
+    margin-left: auto;
+    margin-top: auto;
+}
 
+.browse .row .buttons .nav {
+    border: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+
+    margin: 6px;
+}
+
+.browse .row .subtitle {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.browse .row .element {
+    width: 130px;
+    margin-right: 20px;
+
+}
+
+.browse .row .element .card {
+    width: inherit;
+    height: 170px;
+    border-radius: 13px;
+    background-color: #aed9e0;
+    box-shadow: inset 0px -5px 30px rgba(0, 0, 0, 0.05);
+
+    margin-bottom: 5px;
+}
+
+.browse .row .element .title {
+    padding-left: 5px;
+    padding-right: 5px;
+
+    font-weight: 400;
+    font-size: 1rem;
+}
