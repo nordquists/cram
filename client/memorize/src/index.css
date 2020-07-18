@@ -3,7 +3,7 @@
     --bg-accent: #E4E4E4;
     --text-color: #3A3A3A;
     --flashcard-width: 40vw;
-    --animation-speed: 500ms;
+    --animation-speed: 200ms;
 }
 
 body {
