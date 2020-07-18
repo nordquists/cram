@@ -1,11 +1,10 @@
-import React, {Component, useEffect, useState} from 'react';
-import Flashcard from './Flashcard';
+import React, {Component} from 'react';
 import ProgressBar from './ProgressBar';
 import ButtonRow from './ButtonRow';
 import '../../index.css';
 import Deck from "./Deck";
 import { connect } from 'react-redux';
-import { getDeck, studyAdvance } from "../../actions/studyActions";
+import { getDeck } from "../../actions/studyActions";
 import PropTypes from 'prop-types';
 
 
@@ -18,10 +17,8 @@ class Study extends Component {
     render() {
         const { queue, percentages, index } = this.props.study;
 
-        console.log(percentages);
-
         return (
-            <div className="wrapper">
+            <div>
                 <ProgressBar percentages={percentages}/>
                 <Deck deck={queue} index={index}/>
                 <ButtonRow/>
@@ -39,4 +36,4 @@ const mapStateToProps = (state) => ({
     study: state.study
 });
 
-export default connect(mapStateToProps, { getDeck, studyAdvance })(Study);
+export default connect(mapStateToProps, { getDeck })(Study);
