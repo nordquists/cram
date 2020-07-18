@@ -11,15 +11,21 @@ const PileSchema = new Schema({
         default: Date.now,
         required: true
     },
-    owner: {
-        type: [{ type: Schema.Types.ObjectId, ref: 'User'}],
-        default: Date.now,
+    creator: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
         required: true
     },
-    private: {
+    is_private: {
         type: Boolean,
         default: true
-    }
+    },
+    decks: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Deck'
+        }
+    ]
 });
 
 module.exports = Pile = mongoose.model('Pile', PileSchema)

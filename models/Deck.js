@@ -6,21 +6,30 @@ const DeckSchema = new Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String
+    },
     date_created: {
         type: Date,
         default: Date.now,
         required: true
     },
     creator: {
-        type: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
         required: true
     },
     piles: {
-        type: [{ type: Schema.Types.ObjectId, ref: 'Pile'}],
+        type: mongoose.Schema.ObjectId
     },
-    private: {
+    is_private: {
         type: Boolean,
         default: true
+    },
+    cards_num: {
+        type: Number,
+        required: true,
+        default: 0
     },
     cards: [
         {
