@@ -5,7 +5,7 @@ class Browse extends Component {
 
     render() {
         return (
-            <div>
+            <div className="browse">
                 <BrowseRow/>
             </div>
         );
