@@ -2,8 +2,9 @@ import React from 'react';
 import MainScreen from "./components/MainScreen";
 import Study from "./components/Study/Study";
 import Browse from "./components/Browse/Browse";
+import NavSidebar from "./components/NavSidebar";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -14,8 +15,14 @@ function App() {
         <Provider store={store}>
             <Router>
                 <div className="wrapper">
-                    <Route path="/study" component={Study}/>
-                    <Route path="/browse" component={Browse}/>
+                    <NavSidebar/>
+                    <Switch>
+                        <Route path="/" exact component={Study}/>
+                        <Route path="/create" component={Study}/>
+                        <Route path="/study" component={Study}/>
+                        <Route path="/browse" component={Browse}/>
+                        <Route path="/settings" component={Browse}/>
+                    </Switch>
                 </div>
             </Router>
 

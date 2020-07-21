@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class NavSidebar extends Component {
     render() {
         return(
-            <Nav vertical>
-                <NavItem>
-                    <NavLink disabled href="#">Create</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink disabled href="#">Study</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink disabled href="#">Browse</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink disabled href="#">Settings</NavLink>
-                </NavItem>
-            </Nav>
-
+            <div className="navbar">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <NavLink className="nav-link" activeClassName="selected" to="/create">Create</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" activeClassName="selected" exact to="/">Study</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" activeClassName="selected" to="/browse">Browse</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" activeClassName="selected" to="/settings">Settings</NavLink>
+                    </li>
+                </ul>
+            </div>
         );
     }
 }
