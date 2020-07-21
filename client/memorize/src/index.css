@@ -19,10 +19,11 @@ body {
     margin-right: auto;
     margin-left:  auto;
 
-    max-width: 50vw; /* 2 */
+    max-width: 760px; /* 2 */
 
     padding-right: 10px; /* 3 */
     padding-left:  10px; /* 3 */
+    padding-top: 20px;
 }
 
 .navbar {
@@ -194,6 +195,8 @@ body {
     margin-right: auto;
     margin-left: auto;
 
+    width: 100%;
+
     transition: 150ms;
 }
 
@@ -215,6 +218,7 @@ body {
     font-weight: 700;
     font-size: 1.5rem;
     margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .browse-row .row .element {

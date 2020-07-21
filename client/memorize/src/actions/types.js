@@ -7,3 +7,6 @@ export const STUDY_ADVANCE_GREEN = 'STUDY_ADVANCE_GREEN';
 
 export const STUDY_BACK = 'STUDY_BACK';
 export const STUDY_FINISH = 'STUDY_FINISH';
+
+
+export const BROWSE_LOAD = 'BROWSE_LOAD';

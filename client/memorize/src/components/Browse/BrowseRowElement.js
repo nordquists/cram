@@ -11,26 +11,28 @@ const BrowseRowElement = (props) => {
     const [hover, setHover] = useState(false);
 
     return (
-        <div className="element" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
-            <div className="card">
-                {/*<div className="card-hover hidden">*/}
-                {/*    <svg viewBox={circleConfig.viewBox}>*/}
-                {/*        <circle*/}
-                {/*            className="progress"*/}
-                {/*            cx={circleConfig.x}*/}
-                {/*            cy={circleConfig.y}*/}
-                {/*            r={circleConfig.radio}*/}
-                {/*            fill="transparent"/>*/}
-                {/*    </svg>*/}
+        <div>
+            <div className="element" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
+                <div className="card">
+                    {/*<div className="card-hover hidden">*/}
+                    {/*    <svg viewBox={circleConfig.viewBox}>*/}
+                    {/*        <circle*/}
+                    {/*            className="progress"*/}
+                    {/*            cx={circleConfig.x}*/}
+                    {/*            cy={circleConfig.y}*/}
+                    {/*            r={circleConfig.radio}*/}
+                    {/*            fill="transparent"/>*/}
+                    {/*    </svg>*/}
 
-                {/*</div>*/}
-                <div className="title">
-                    The title of our card
+                    {/*</div>*/}
+                    {/*<div className="title">*/}
+                    {/*    {props.name}*/}
+                    {/*</div>*/}
                 </div>
             </div>
-            {/*<div className="title">*/}
-            {/*    The title of our card*/}
-            {/*</div>*/}
+            <div className="title">
+                {props.name}
+            </div>
         </div>
 
     );
