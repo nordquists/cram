@@ -5,7 +5,7 @@ const BrowseRow = (props) => {
     const elements = [];
     props.decks.forEach((deck) => {
         elements.push(
-            <BrowseRowElement name={deck.name}/>
+            <BrowseRowElement deck={deck}/>
         );
     });
 
