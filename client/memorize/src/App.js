@@ -3,6 +3,7 @@ import MainScreen from "./components/MainScreen";
 import Study from "./components/Study/Study";
 import Browse from "./components/Browse/Browse";
 import NavSidebar from "./components/NavSidebar";
+import DeckViewContainer from "./components/DeckView/DeckViewContainer"
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -22,6 +23,7 @@ function App() {
                         <Route path="/study" component={Study}/>
                         <Route path="/browse" component={Browse}/>
                         <Route path="/settings" component={Browse}/>
+                        <Route path="/:deck_id" component={DeckViewContainer}/>
                     </Switch>
                 </div>
             </Router>
