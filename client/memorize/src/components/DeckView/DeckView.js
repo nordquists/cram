@@ -1,5 +1,7 @@
 import React from 'react';
-import Deck from "../Study/Deck";
+import DeckViewHeader from "./DeckViewHeader"
+import DeckViewHeaderPlaceholder from "./DeckViewHeaderPlaceholder"
+import DeckViewPreview from "./DeckViewPreview"
 
 
 // TODO Need to have a different way to render when the we are not the owner of the deck
@@ -12,17 +14,15 @@ const DeckView = (props) => {
     return (
         <div>
             <div>
-                <h3>Created by</h3>
+                <button>Back</button>
             </div>
-            <div>
-                <p>{!loading && payload[0].topic}</p>
-                <h1>{loading && "loading..."} {!loading && payload[0].name}</h1>
-            </div>
-            <h3>{!loading && payload[0].description}</h3>
+
+            {loading && <DeckViewHeaderPlaceholder/>}
+            {!loading && <DeckViewHeader title={payload[0].name} description={payload[0].description} author={payload[0].author} topic={payload[0].topic}/>}
 
             {/*// embed flash card app in here to preview */}
 
-            {!loading && <Deck deck={payload[0].deck} index={index}/>}
+            {!loading && <DeckViewPreview deck={payload[0].deck} index={index}/>}
 
             <div>
                 <button>Back</button>
@@ -36,6 +36,7 @@ const DeckView = (props) => {
             </div>
 
             <div>
+                <button>Pin</button>
                 <button>Edit</button>
                 <button>Delete</button>
             </div>

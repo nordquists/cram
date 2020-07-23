@@ -5,12 +5,15 @@ const example_rows = [
         subtitle: "Most Popular Decks",
         decks: [
             {
+                id: "1",
                 name: "My first deck"
             },
             {
+                id: "2",
                 name: "My second deck"
             },
             {
+                id: "3",
                 name: "My third deck"
             }
         ]
@@ -19,12 +22,15 @@ const example_rows = [
         subtitle: "Recommended Decks",
         decks: [
             {
+                id: "1",
                 name: "My first deck"
             },
             {
+                id: "2",
                 name: "My second deck"
             },
             {
+                id: "3",
                 name: "My third deck"
             }
         ]
