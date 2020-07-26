@@ -1,4 +1,4 @@
-import React, {useState, useEffect}from 'react';
+import React, {useState, useEffect} from 'react';
 import Resource from '../Resource';
 import DeckView from './DeckView';
 
@@ -10,14 +10,12 @@ const DeckViewContainer = (props) => {
 
     return (
         // TODO placeholder values
-        <div>
-            <Resource
-                path="deck/id"
-                render={ data => (
-                    <DeckView data={data}/>
-                )}
-            />
-        </div>
+        <Resource
+            path="deck/id"
+            render={ payload => (
+                <DeckView data={payload}/>
+            )}
+        />
     );
 }
 

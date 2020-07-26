@@ -21,9 +21,9 @@ body {
 
     max-width: 760px; /* 2 */
 
-    padding-right: 10px; /* 3 */
-    padding-left:  10px; /* 3 */
-    padding-top: 20px;
+    /*padding-right: 10px; !* 3 *!*/
+    /*padding-left:  10px; !* 3 *!*/
+    /*padding-top: 20px;*/
 }
 
 .navbar {
@@ -187,6 +187,10 @@ body {
 }
 
 .browse-row .row {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
     display: flex;
     flex-direction: row;
 
@@ -222,6 +226,7 @@ body {
 }
 
 .browse-row .row .element {
+    display: inline-block;
     width: 130px;
     height: 170px;
     margin-right: 20px;

@@ -1,5 +1,50 @@
 import React, { Component } from "react";
 
+const example_rows = [
+    {
+        subtitle: "Most Popular Decks",
+        decks: [
+            {
+                id: "1",
+                name: "My first deck"
+            },
+            {
+                id: "2",
+                name: "My second deck"
+            },
+            {
+                id: "3",
+                name: "My third deck"
+            },
+            {
+                id: "4",
+                name: "My fourth deck"
+            }
+        ]
+    },
+    {
+        subtitle: "Recommended Decks",
+        decks: [
+            {
+                id: "1",
+                name: "My first deck"
+            },
+            {
+                id: "2",
+                name: "My second deck"
+            },
+            {
+                id: "3",
+                name: "My third deck"
+            },
+            {
+                id: "4",
+                name: "My fourth deck"
+            }
+        ]
+    }
+]
+
 const SAMPLE_DECK = [
     {
         id: 1,
@@ -110,6 +155,10 @@ const EXAMPLE_DECK = [{
     deck: SAMPLE_DECK,
 }]
 
+const EXAMPLE_DECK1 = [{
+    rows: example_rows,
+}]
+
 class Resource extends Component {
     state = {
         loading: true,
@@ -127,6 +176,7 @@ class Resource extends Component {
         // })
 
         if(this.props.path == "deck/id") {
+            console.log("deck")
             setTimeout(function () {
                 this.setState({
                     payload: EXAMPLE_DECK,
@@ -134,11 +184,12 @@ class Resource extends Component {
                     error: false
                 })
             }.bind(this), 2000);
-        } else {
+        }  else if(this.props.path == "/") {
+            console.log("/")
             this.setState({
-                payload: [],
+                payload: EXAMPLE_DECK1,
                 loading: false,
-                error: true
+                error: false
             })
         }
     }
