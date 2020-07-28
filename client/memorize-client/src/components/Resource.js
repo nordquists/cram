@@ -2,11 +2,26 @@ import React, { Component } from "react";
 
 const example_rows = [
     {
-        subtitle: "Most Popular Decks",
-        decks: [
+        title: "Most Popular Decks",
+        elements: [
             {
                 id: "1",
-                name: "My first deck"
+                name: "My first deck with a long title"
+            },
+            {
+                id: "2",
+                name: "My second deck"
+            },
+            {
+                id: "3",
+                name: "My third deck"
+            },
+            {
+                id: "4",
+                name: "My fourth deck"
+            },{
+                id: "1",
+                name: "My first deck with a long title"
             },
             {
                 id: "2",
@@ -23,8 +38,8 @@ const example_rows = [
         ]
     },
     {
-        subtitle: "Recommended Decks",
-        decks: [
+        title: "Recommended Decks",
+        elements: [
             {
                 id: "1",
                 name: "My first deck"
@@ -175,7 +190,7 @@ class Resource extends Component {
         //     })
         // })
 
-        if(this.props.path == "deck/id") {
+        if(this.props.path === "deck/id") {
             console.log("deck")
             setTimeout(function () {
                 this.setState({
@@ -184,7 +199,7 @@ class Resource extends Component {
                     error: false
                 })
             }.bind(this), 2000);
-        }  else if(this.props.path == "/") {
+        }  else if(this.props.path === "/") {
             console.log("/")
             this.setState({
                 payload: EXAMPLE_DECK1,

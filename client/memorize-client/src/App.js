@@ -12,6 +12,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
 import { CategorySelector } from './components/Form/CategorySelector';
+import { TableContainer } from './components/TableView/TableContainer';
+
 
 const categories = [
     {emoji: '🍎', label: 'Apples'},
@@ -25,9 +27,11 @@ function App() {
         <Provider store={store}>
             <Router>
                 <div className="wrapper">
-                    <CategorySelector categories={categories}/>
-
-                    {/*<NavSidebar/>*/}
+                    <NavSidebar/>
+                    {/* <div>
+                        <CategorySelector categories={categories}/>
+                        <TableContainer path="/"/>
+                    </div> */}
                     {/* <Switch>
                         <Route path="/" exact component={StudyBrowseContainer}/>
                         <Route path="/create" component={Study}/>
