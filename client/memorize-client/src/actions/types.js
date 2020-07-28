@@ -1,0 +1,12 @@
+export const GET_DECK = 'GET_DECK';
+
+export const STUDY_ADVANCE_RED = 'STUDY_ADVANCE_RED';
+export const STUDY_ADVANCE_ORANGE = 'STUDY_ADVANCE_ORANGE';
+export const STUDY_ADVANCE_GREEN = 'STUDY_ADVANCE_GREEN';
+
+
+export const STUDY_BACK = 'STUDY_BACK';
+export const STUDY_FINISH = 'STUDY_FINISH';
+
+
+export const BROWSE_LOAD = 'BROWSE_LOAD';
