@@ -371,3 +371,81 @@ body {
     display: inline-block;
     background-color: #F5F5F5;
 }
+
+.header-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.title-div {
+    margin-right: auto;
+}
+
+.header-back-button {
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    color: #616161;
+    transition: 100ms;
+
+    cursor: pointer;
+}
+
+.header-back-button-label {
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.header-back-button svg {
+    height: 1.8em;
+    width: 1.8em;
+    /* top: .525em; */
+    margin: 0;
+    stroke: #616161;
+    margin-right: 5px;
+    
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.header-back-button:hover {
+    filter: brightness(0.9);
+}
+
+.header-back-button:focus {
+    outline: none;
+}
+
+.button-header {
+    background-color: #F5F5F5;
+    border: none;
+    height: 40px;
+    border-radius: 10px;
+    color: #616161;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    
+    transition: 100ms;
+
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+.button-header:hover {
+    filter: brightness(0.9);
+}

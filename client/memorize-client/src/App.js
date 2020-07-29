@@ -27,11 +27,17 @@ function App() {
         <Provider store={store}>
             <Router>
                 <div className="wrapper">
-                    <NavSidebar/>
+                    {/* <NavSidebar/> */}
                     {/* <div>
                         <CategorySelector categories={categories}/>
                         <TableContainer path="/"/>
                     </div> */}
+
+
+                    <Route path="/:deck_id/edit" component={EditContainer}/>
+
+
+
                     {/* <Switch>
                         <Route path="/" exact component={StudyBrowseContainer}/>
                         <Route path="/create" component={Study}/>
