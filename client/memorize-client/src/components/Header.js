@@ -13,7 +13,7 @@ export const Header = ({ title, subtitle, onBack, otherButtonText, otherButtonFo
             <div>
                 {
                     onBack && 
-                    <button className="header-back-button">
+                    <button className="header-back-button" onClick={onBack}>
                         <ChevronIcon/>
                         <span className="header-back-button-label">Back</span>
                     </button>

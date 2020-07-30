@@ -31,6 +31,10 @@ const EditContainer = (props) => {
         fetchDeck();
     }, [id])
 
+    let onBack =  (e) => {
+        props.history.push('/'.concat(id));
+    }
+
     let onSubmit = (e) => {
         e.preventDefault();
         patchDeck();
@@ -38,7 +42,7 @@ const EditContainer = (props) => {
     }
 
     return (
-        <Edit data={data} setData={setData} onSubmit={onSubmit} saving={saving} loading={loading}/>
+        <Edit data={data} setData={setData} onBack={onBack} onSubmit={onSubmit} saving={saving} loading={loading}/>
     );
 
 }

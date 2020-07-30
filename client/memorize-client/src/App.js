@@ -14,7 +14,6 @@ import './App.css';
 import { CategorySelector } from './components/Form/CategorySelector';
 import { TableContainer } from './components/TableView/TableContainer';
 
-
 const categories = [
     {emoji: '🍎', label: 'Apples'},
     {emoji: '🍊', label: 'Orange'},
@@ -32,7 +31,6 @@ function App() {
                         <CategorySelector categories={categories}/>
                         <TableContainer path="/"/>
                     </div> */}
-
 
                     <Route path="/:deck_id/edit" component={EditContainer}/>
 
