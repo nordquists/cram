@@ -25,14 +25,14 @@ function App() {
     return (
         <Provider store={store}>
             <Router>
+                <NavSidebar/>
                 <div className="wrapper">
-                    {/* <NavSidebar/> */}
                     {/* <div>
                         <CategorySelector categories={categories}/>
                         <TableContainer path="/"/>
                     </div> */}
 
-                    <Route path="/:deck_id/edit" component={EditContainer}/>
+                    {/* <Route path="/:deck_id/edit" component={EditContainer}/> */}
 
 
 

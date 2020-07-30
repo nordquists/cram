@@ -11,9 +11,8 @@ export const ModalContainer = ({ render, closable, showing, setShowing }) => {
                             <button onClick={() => setShowing(false)}>x</button>
                         </div>
                     }
-                    <section className="modal-content">
-                        { render({ setShowing }) }
-                    </section>
+                    
+                    { render({ setShowing }) }
                 </div>
             }
         </div>
