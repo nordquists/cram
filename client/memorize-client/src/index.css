@@ -15,23 +15,16 @@ body {
     padding: 0;
 }
 
+.nav-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .wrapper {
     margin-right: auto;
     margin-left:  auto;
-
-    max-width: 840px; /* 2 */
-
-    /* display: flex;
-    flex-direction: row; */
-
-    /*padding-right: 10px; !* 3 *!*/
-    /*padding-left:  10px; !* 3 *!*/
-    /*padding-top: 20px;*/
 }
 
-.navbar {
-    position: fixed;
-}
 
 .nav-link {
     font-family: Inter;
@@ -94,6 +87,14 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+    .wrapper {
+        max-width: 90vw;
+
+        padding-right: 10px; 
+        padding-left:  10px; 
+        padding-top: 10px;
+    }
+
     .navbar {
         width: 100vw;
         height: 4.2rem;
@@ -102,6 +103,8 @@ body {
         border-top: 1px solid #EEEEEE;
         /* margin-right: 10px;
         margin-left: 10px; */
+
+        position: fixed;
     }
 
     .navbar-nav {
@@ -132,6 +135,10 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+    .wrapper {
+        max-width: 840px;
+    }
+
     .navbar {
         width: var(--nav-width);
         height: 100vh;

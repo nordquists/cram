@@ -16,7 +16,7 @@ import { TableContainer } from './components/TableView/TableContainer';
 
 const categories = [
     {emoji: '🍎', label: 'Apples'},
-    {emoji: '🍊', label: 'Orange'},
+    {emoji: '🍊', label: 'Oranges'},
     {emoji: '🍅', label: 'Tomatoes'},
     {emoji: '🍍', label: 'Pineapples'},
 ]
@@ -25,26 +25,28 @@ function App() {
     return (
         <Provider store={store}>
             <Router>
-                <NavSidebar/>
-                <div className="wrapper">
-                    {/* <div>
-                        <CategorySelector categories={categories}/>
-                        <TableContainer path="/"/>
-                    </div> */}
+                <div className="nav-wrapper">
+                    <NavSidebar/>
+                    <div className="wrapper">
+                        {/* <div> */}
+                            <CategorySelector categories={categories}/>
+                            <TableContainer path="/"/>
+                        {/* </div> */}
 
-                    {/* <Route path="/:deck_id/edit" component={EditContainer}/> */}
+                        {/* <Route path="/:deck_id/edit" component={EditContainer}/> */}
 
 
 
-                    {/* <Switch>
-                        <Route path="/" exact component={StudyBrowseContainer}/>
-                        <Route path="/create" component={Study}/>
-                        <Route path="/study" component={Study}/>
-                        <Route path="/browse" component={Browse}/>
-                        <Route path="/settings" component={Browse}/>
-                        <Route path="/:deck_id" exact component={DeckViewContainer}/>
-                        <Route path="/:deck_id/edit" component={EditContainer}/>
-                    </Switch> */}
+                        {/* <Switch>
+                            <Route path="/" exact component={StudyBrowseContainer}/>
+                            <Route path="/create" component={Study}/>
+                            <Route path="/study" component={Study}/>
+                            <Route path="/browse" component={Browse}/>
+                            <Route path="/settings" component={Browse}/>
+                            <Route path="/:deck_id" exact component={DeckViewContainer}/>
+                            <Route path="/:deck_id/edit" component={EditContainer}/>
+                        </Switch> */}
+                    </div>
                 </div>
             </Router>
 
