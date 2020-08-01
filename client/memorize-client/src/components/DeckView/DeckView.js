@@ -1,35 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DeckViewHeader from "./DeckViewHeader"
-import DeckViewHeaderPlaceholder from "./DeckViewHeaderPlaceholder"
 import DeckViewPreview from "./DeckViewPreview"
+import Header from '../Header';
+import { StatsCircle } from '../Stats/StatsCircle';
 
 
 // TODO Need to have a different way to render when the we are not the owner of the deck
 // Render different stuff, also need a way to edit from this screen
 
-const DeckView = (props) => {
-    const index = 0;
-    const { loading, payload, error } = props.data;
+const DeckView = ({ loading, data, error, onBack}) => {
+    const [index, setIndex] = useState(0)
 
     return (
         <div>
-            <div>
-                <button>Back</button>
-            </div>
+            <Header
+                onBack={onBack}
+            />
 
-            {loading && <DeckViewHeaderPlaceholder/>}
-            {!loading && <DeckViewHeader title={payload[0].name} description={payload[0].description} author={payload[0].author} topic={payload[0].topic}/>}
+            {/* {loading && <DeckViewHeaderPlaceholder/>} */}
+            {!loading && <DeckViewHeader title={data[0].name} description={data[0].description} author={data[0].author} categories={data[0].categories}/>}
 
             {/*// embed flash card app in here to preview */}
 
-            {!loading && <DeckViewPreview deck={payload[0].deck} index={index}/>}
+            {!loading && <DeckViewPreview deck={data[0].deck} index={index} setIndex={setIndex}/>}
 
-            <div>
-                <button>Back</button>
-                <button>Next</button>
-                <button>Keyboard Shortcuts</button>
-            </div>
-
+            {!loading && 
+                <div className="desktop-stats">
+                    <StatsCircle
+                        width={'100%'}
+                        red={data[0].percentages.red}
+                        orange={data[0].percentages.orange}
+                        green={data[0].percentages.green}
+                        hasInternalLabel={true}
+                    />
+                </div>
+            }
+            
             <div>
                 <button>Study</button>
                 <button>Flashcards</button>
