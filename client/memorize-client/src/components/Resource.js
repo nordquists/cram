@@ -165,9 +165,26 @@ const SAMPLE_DECK = [
 
 const EXAMPLE_DECK = [{
     name: "US Geography",
-    topic: "Geopgraphy",
+    author: "Sean Nordquist",
+    categories: [
+        {
+            id: 1,
+            emoji: '🌎',
+            label: 'Geography',
+        },
+        {
+            id: 2,
+            emoji: '🇺🇸',
+            label: 'United States',
+        },
+    ],
     description: "This is a deck that will help you learn about US geography, including the names of states, their capital cities, and their most notable landmarks.",
     deck: SAMPLE_DECK,
+    percentages: {
+        red: 10,
+        orange: 20,
+        green: 30,
+    }
 }]
 
 const EXAMPLE_DECK1 = [{
@@ -198,7 +215,7 @@ class Resource extends Component {
                     loading: false,
                     error: false
                 })
-            }.bind(this), 2000);
+            }.bind(this), 0);
         }  else if(this.props.path === "/") {
             console.log("/")
             this.setState({

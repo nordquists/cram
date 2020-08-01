@@ -13,6 +13,7 @@ import store from './store';
 import './App.css';
 import { CategorySelector } from './components/Form/CategorySelector';
 import { TableContainer } from './components/TableView/TableContainer';
+import { StatsCircle } from './components/Stats/StatsCircle';
 
 const categories = [
     {emoji: '🍎', label: 'Apples'},
@@ -26,18 +27,15 @@ function App() {
         <Provider store={store}>
             <Router>
                 <div className="nav-wrapper">
-                    <NavSidebar/>
+                    {/* <NavSidebar/> */}
                     <div className="wrapper">
-                        {/* <div> */}
-                            <CategorySelector categories={categories}/>
-                            <TableContainer path="/"/>
-                        {/* </div> */}
+                        {/* <CategorySelector categories={categories}/>
+                        <TableContainer path="/"/> */}
 
                         {/* <Route path="/:deck_id/edit" component={EditContainer}/> */}
 
 
-
-                        {/* <Switch>
+                        <Switch>
                             <Route path="/" exact component={StudyBrowseContainer}/>
                             <Route path="/create" component={Study}/>
                             <Route path="/study" component={Study}/>
@@ -45,7 +43,7 @@ function App() {
                             <Route path="/settings" component={Browse}/>
                             <Route path="/:deck_id" exact component={DeckViewContainer}/>
                             <Route path="/:deck_id/edit" component={EditContainer}/>
-                        </Switch> */}
+                        </Switch>
                     </div>
                 </div>
             </Router>

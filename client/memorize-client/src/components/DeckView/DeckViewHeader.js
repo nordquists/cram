@@ -1,26 +1,31 @@
 import React from 'react';
+import { CategoryLabeler } from './CategoryLabeler';
+import { StatsLine } from '../Stats/StatsLine';
 
-const DeckViewHeader = ({ topic, title, description, author }) => {
+const DeckViewHeader = ({ categories, title, description, author, percentages }) => {
     return (
         <div className="deck-view-header">
-            <div className="icon">
+            
+            <div className="topics">
+                <CategoryLabeler
+                    categories={categories}
+                />
+            </div>
+            <h1>
+                {title}
+            </h1>
+            <h3>
+                {description}
+            </h3>
 
-            </div>
-            <div>
-                <div className="topic">
-                    {topic}
-                </div>
-                <div className="title">
-                    {title}
-                </div>
-                <div className="description">
-                    {description}
-                </div>
-            </div>
-            <div className="created-by">
-                Created by {author}
-            </div>
+            {/* <div className="by-line">
+                <p className="created-by">CREATED BY  </p>
+                <p className="author">{author}</p>
+            </div> */}
+
         </div>
+
+       
     );
 }
 
