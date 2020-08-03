@@ -164,6 +164,7 @@ const SAMPLE_DECK = [
 ]
 
 const EXAMPLE_DECK = [{
+    id: "thisismyid",
     name: "US Geography",
     author: "Sean Nordquist",
     categories: [
