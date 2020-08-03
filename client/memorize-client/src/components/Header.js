@@ -19,20 +19,23 @@ export const Header = ({ title, subtitle, onBack, otherButtonText, otherButtonFo
                     </button>
                 }
             </div>
-            <div className="header-flex">
-                <div className="title-div">
-                    <h1>{title && title}</h1>
-                    <h3>{subtitle && subtitle}</h3>
+            {
+                (title || subtitle || otherButtonText) && 
+                <div className="header-flex">
+                    <div className="title-div">
+                        <h1>{title && title}</h1>
+                        <h3>{subtitle && subtitle}</h3>
+                    </div>
+                    <div>
+                        {
+                            otherButtonText && 
+                            <button form={otherButtonFormId} type="submit" className="button-header">
+                                {otherButtonText}
+                            </button>
+                        }
+                    </div>
                 </div>
-                <div>
-                    {
-                        otherButtonText && 
-                        <button form={otherButtonFormId} type="submit" className="button-header">
-                            {otherButtonText}
-                        </button>
-                    }
-                </div>
-            </div>
+            }
         </div>
     )
 }
