@@ -1,23 +1,14 @@
-import {GET_DECK, STUDY_ADVANCE_GREEN, STUDY_ADVANCE_ORANGE, STUDY_ADVANCE_RED} from "./types";
+import {STUDY_GET_QUEUE, STUDY_ADVANCE} from "./types";
 
-export const getDeck = () => {
+export const getQueue = () => {
     return {
-        type: GET_DECK
+        type: STUDY_GET_QUEUE
     };
 }
 
 export const studyAdvance = (color) => {
-    if (color === 'red'){
-        return {
-            type: STUDY_ADVANCE_RED,
-        };
-    } else if (color === 'orange'){
-        return {
-            type: STUDY_ADVANCE_ORANGE,
-        };
-    } else if (color === 'green'){
-        return {
-            type: STUDY_ADVANCE_GREEN,
-        };
-    }
+    return {
+        type: STUDY_ADVANCE,
+        value: color
+    };
 }
