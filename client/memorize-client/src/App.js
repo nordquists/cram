@@ -1,5 +1,5 @@
 import React from 'react';
-import Study from "./components/Study/Study";
+import StudyContainer from "./components/StudyHooks/StudyContainer";
 import StudyBrowseContainer from "./components/StudyBrowse/StudyBrowseContainer";
 import Browse from "./components/Browse/Browse";
 import NavSidebar from "./components/NavSidebar";
@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import { Provider } from 'react-redux';
 import store from './store';
-import './App.css';
+import './index.css';
 import { CategorySelector } from './components/Form/CategorySelector';
 import { TableContainer } from './components/TableView/TableContainer';
 import { StatsCircle } from './components/Stats/StatsCircle';
@@ -31,22 +31,22 @@ function App() {
             <Router>
                 {/* <div className="nav-wrapper"> */}
                     {/* <NavSidebar/> */}
-                    {/* <div className="wrapper"> */}
+                    <div className="wrapper">
                         {/* <CategorySelector categories={categories}/>
-                        <TableContainer path="/"/> */}
+                        <TableContainer path="/"/>
 
                         {/* <Route path="/:deck_id/edit" component={EditContainer}/> */}
 
                         <Switch>
-                            <Route path="create" component={Study}/>
-                            <Route path="browse" component={Browse}/>
-                            <Route path="settings" component={Browse}/>
+                            <Route path="/create" component={StudyContainer}/>
+                            <Route path="/browse" component={Browse}/>
+                            <Route path="/settings" component={Browse}/>
                             <Route path="/login" component={LoginContainer}/>
                             <Route path="/register" component={RegisterContainer}/>
 
                             <Route path="/:deck_id/deck" exact component={DeckViewContainer}/>
-                            <Route path="/:deck_id/study" exact component={Study}/>
-                            <Route path="/:deck_id/test" exact component={Study}/>
+                            <Route path="/:deck_id/study" exact component={StudyContainer}/>
+                            <Route path="/:deck_id/test" exact component={StudyContainer}/>
                             <Route path="/:deck_id/edit" exact component={EditContainer}/>
 
                             
@@ -56,7 +56,7 @@ function App() {
 
                         
 
-                    {/* </div> */}
+                    </div>
                 {/* </div> */}
             </Router>
 
