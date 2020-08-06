@@ -17,6 +17,7 @@ import { StatsCircle } from './components/Stats/StatsCircle';
 import { LoginContainer } from './components/Authentication/LoginContainer';
 import { Error404 } from './components/Error/Error404';
 import { RegisterContainer } from './components/Authentication/RegisterContainer';
+import CreateContainer from './components/Create/CreateContainer';
 
 const categories = [
     {emoji: '🍎', label: 'Apples'},
@@ -38,7 +39,7 @@ function App() {
                         {/* <Route path="/:deck_id/edit" component={EditContainer}/> */}
 
                         <Switch>
-                            <Route path="/create" component={StudyContainer}/>
+                            <Route path="/create" component={CreateContainer}/>
                             <Route path="/browse" component={Browse}/>
                             <Route path="/settings" component={Browse}/>
                             <Route path="/login" component={LoginContainer}/>
