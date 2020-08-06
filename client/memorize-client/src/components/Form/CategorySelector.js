@@ -22,8 +22,6 @@ export const CategorySelector = ({ categories }) => {
         );
     });
 
-    console.log(selected)    
-
     return (
         <div>
             {categoryButtons}

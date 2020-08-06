@@ -4,7 +4,7 @@ import {ReactComponent as ChevronIcon} from '../icons/left-chevron.svg'
 // should be able to have two buttons, a back button, and a button of choice
 // title and subtitle
 
-export const Header = ({ title, subtitle, onBack, otherButtonText, otherButtonFormId }) => {
+export const Header = ({ title, subtitle, onBack, otherButtonText, isSubmitting, onSubmit }) => {
 
 
 
@@ -21,7 +21,7 @@ export const Header = ({ title, subtitle, onBack, otherButtonText, otherButtonFo
             </div>
             {
                 (title || subtitle || otherButtonText) && 
-                <div className="header-flex">
+                <div className={'header-flex header-sticky'}>
                     <div className="title-div">
                         <h1>{title && title}</h1>
                         <h3>{subtitle && subtitle}</h3>
@@ -29,7 +29,7 @@ export const Header = ({ title, subtitle, onBack, otherButtonText, otherButtonFo
                     <div>
                         {
                             otherButtonText && 
-                            <button form={otherButtonFormId} type="submit" className="button-header">
+                            <button onClick={onSubmit} disabled={isSubmitting} type="submit" className="button-header">
                                 {otherButtonText}
                             </button>
                         }

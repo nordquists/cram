@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Resource from '../Resource';
 import Edit from './Edit'
 import { withRouter } from 'react-router-dom';
 
@@ -11,7 +10,28 @@ const EditContainer = (props) => {
 
     const fetchDeck = async () => {
         setLoading(true);
-        setData(data => ({...data, name: "sean", description: "hello"}));
+        setData(data => ({...data, 
+            name: "sean", 
+            description: "hello",
+            cards: [
+                {
+                    front: "front1",
+                    back:"back1"
+                },
+                {
+                    front: "front2",
+                    back:"back1"
+                },
+                {
+                    front: "front3",
+                    back:"back1"
+                },
+                {
+                    front: "front4",
+                    back:"back1"
+                }
+            ]
+        }));
         
         // axios.get(this.props.path).then(res => {
         //     setData(res.data);
@@ -41,7 +61,11 @@ const EditContainer = (props) => {
     }
 
     return (
-        <Edit data={data} setData={setData} onBack={onBack} onSubmit={onSubmit} saving={saving} loading={loading}/>
+        <div>
+            {!loading && 
+            <Edit data={data} setData={setData} onBack={onBack} onSubmit={onSubmit} saving={saving} loading={loading}/>
+            }
+        </div>
     );
 
 }
