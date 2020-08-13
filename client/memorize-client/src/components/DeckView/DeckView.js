@@ -3,36 +3,38 @@ import DeckViewHeader from "./DeckViewHeader"
 import DeckViewPreview from "./DeckViewPreview"
 import Header from '../Header';
 import { DeckViewButtonGroup } from './DeckViewButtonGroup';
+import { Redirect } from "react-router-dom";
 
 
 // TODO Need to have a different way to render when the we are not the owner of the deck
 // Render different stuff, also need a way to edit from this screen
 
 const DeckView = ({ loading, data, error, onBack}) => {
-    const [index, setIndex] = useState(0)
+    const [index, setIndex] = useState(0) 
 
     return (
         <div>
+            { error && <Redirect to="/404"/> }
             <Header
                 onBack={onBack}
             />
             {/* {loading && <DeckViewHeaderPlaceholder/>} */}
             {!loading && 
                 <DeckViewHeader 
-                    title={data[0].name} 
-                    description={data[0].description} 
-                    author={data[0].author} 
-                    categories={data[0].categories}
+                    title={data.name} 
+                    description={data.description} 
+                    author={data.author} 
+                    categories={data.categories}
                 />
             }
 
             {!loading && 
                 <DeckViewPreview 
-                    deck={data[0].deck} 
+                    deck={data.cards} 
                     index={index} 
                     setIndex={setIndex}
-                    id={data[0].id}
-                    percentages={data[0].percentages}
+                    id={data.id}
+                    percentages={data.stats.percentages}
                 />
             }
 

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import BrowseRow from "./BrowseRow";
 import { connect } from 'react-redux';
-import { browseLoad } from "../../actions/browseActions";
 import PropTypes from 'prop-types';
 
 class Browse extends Component {
 
     componentDidMount() {
-        this.props.browseLoad();
+        // this.props.browseLoad();
     }
 
     render() {
@@ -37,4 +36,4 @@ const mapStateToProps = (state) => ({
     browse: state.browse
 });
 
-export default connect(mapStateToProps, { browseLoad })(Browse);
+// export default connect(mapStateToProps, { browseLoad })(Browse);

@@ -37,13 +37,17 @@ const DeckViewPreview = ({ deck, index, setIndex, id, percentages }) => {
             </div>
             <div className="deck-view-preview">
                 <div className="deck">
-                    <Deck deck={deck} index={index}/>
+                    {deck.length > 0 ? 
+                        <Deck deck={deck} index={index}/>
+                    : <p>this deck doesn't have any cards yet</p>}
                 </div>
-                <div className="preview-button-pair">
-                    <button className="preview-button" disabled={leftButton} onClick={() => goLeft()}><LeftChevronIcon/></button>
-                    <h4>{index + 1} / {deck.length}</h4>
-                    <button className="preview-button" disabled={rightButton} onClick={() => goRight()}><RightChevronIcon/></button>
-                </div>
+                {deck.length > 0 &&
+                    <div className="preview-button-pair">
+                        <button className="preview-button" disabled={leftButton} onClick={() => goLeft()}><LeftChevronIcon/></button>
+                        <h4>{index + 1} / {deck.length}</h4>
+                        <button className="preview-button" disabled={rightButton} onClick={() => goRight()}><RightChevronIcon/></button>
+                    </div>
+                } 
             </div>
         </div>
     );

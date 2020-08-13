@@ -10,6 +10,7 @@ export const LoginContainer = (props) => {
     return (
         <Login
             onBack={onBack}
+            history={props.history}
         />
     )
 }

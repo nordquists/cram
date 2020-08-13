@@ -4,7 +4,7 @@ import ButtonRow from './ButtonRow';
 import '../../index.css';
 import Deck from "./Deck";
 import { connect } from 'react-redux';
-import { getQueue } from "../../actions/studyActions";
+// import { getQueue } from "../../actions/studyActions";
 import PropTypes from 'prop-types';
 
 
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => ({
     study: state.study
 });
 
-export default connect(mapStateToProps, { getQueue })(Study);
+// export default connect(mapStateToProps, { getQueue })(Study);
