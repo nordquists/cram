@@ -42,11 +42,7 @@ const Edit = (props) => {
                     categories: []
                 }}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
-                        resetForm();
-                        setSubmitting(false);
-                    }, 1000)
+                    onSubmit(values);
                 }}
                 render={({submitForm, isSubmitting, values}) => (
                     <div>

@@ -1,6 +1,4 @@
 import React from "react";
-import {studyAdvance} from "../../actions/studyActions";
-import {connect} from "react-redux";
 
 const RED_PERFORMANCE = 0;
 const ORANGE_PERFORMANCE = 0.5;

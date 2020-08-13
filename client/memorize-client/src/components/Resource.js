@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 const example_rows = [
     {
@@ -208,23 +209,39 @@ class Resource extends Component {
         //     })
         // })
 
-        if(this.props.path === "deck/id") {
-            console.log("deck")
-            setTimeout(function () {
-                this.setState({
-                    payload: EXAMPLE_DECK,
-                    loading: false,
-                    error: false
-                })
-            }.bind(this), 0);
-        }  else if(this.props.path === "/") {
-            console.log("/")
+        axios({
+            method: 'get',
+            url: this.props.path,
+        }).then((res) => {
             this.setState({
-                payload: EXAMPLE_DECK1,
-                loading: false,
-                error: false
+                payload: res.data,
+                loading: false
             })
-        }
+        }).catch(error => {
+            this.setState({
+                payload: [],
+                error: error,
+                loading: false
+            })
+        })
+
+        // if(this.props.path === "deck/id") {
+        //     console.log("deck")
+        //     setTimeout(function () {
+        //         this.setState({
+        //             payload: EXAMPLE_DECK,
+        //             loading: false,
+        //             error: false
+        //         })
+        //     }.bind(this), 0);
+        // }  else if(this.props.path === "/") {
+        //     console.log("/")
+        //     this.setState({
+        //         payload: EXAMPLE_DECK1,
+        //         loading: false,
+        //         error: false
+        //     })
+        // }
     }
 
     render () {

@@ -13,7 +13,7 @@ const DeckViewContainer = (props) => {
     return (
         // TODO placeholder values
         <Resource
-            path="deck/id"
+            path={'http://localhost:5000/api/decks/'.concat(id)}
             render={ payload => (
                 <DeckView data={payload.payload} error={payload.error} loading={payload.loading} onBack={onBack}/>
             )}

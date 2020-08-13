@@ -1,5 +1,5 @@
 import React from "react";
-import {studyAdvance} from "../../actions/studyActions";
+// import {studyAdvance} from "../../actions/studyActions";
 import {connect} from "react-redux";
 
 const ButtonRow = (props) => {
@@ -23,4 +23,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { studyAdvance })(ButtonRow);
+// export default connect(mapStateToProps, { studyAdvance })(ButtonRow);
