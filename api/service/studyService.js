@@ -13,23 +13,26 @@ module.exports = {
 
 // find top N decks that need to be studied, return their ids and basic stats
 async function topNDueDecks({ N, user_id }) {
+
+    const user = await User.findOne({ sub: user_id });
+
     // find all decks that this user has studied sorted by their average difficulty
     //    and when they were last studied
-    const decks = await DeckStats.find({ user_id: user_id })
+    const decks = await DeckStats.find({ user_id: user._id })
                                     .sort({avg_difficulty: -1, last_studied : 1})
-                                    .populate('deck_id', '_id name description categories');
+                                    .populate('deck_id');
 
     // from the top of the array, find the decks which are due and add them to topN
     var topN = []
     for (const deck of decks) {
-        if (deck.due > Date.now()) {
+        if (Date.now() > deck.due) {
             topN.push(deck);
         }
         if (topN.length >= N) break;
     }
 
     // returns only decks that are due in the order they are most needed to be studied
-    return topN.map(deck => studyBrowseDeckInfo(deck));
+    return topN.map(deck => createBrowseElementWithStats(deck));
 }
 
 async function getToStudy({ user_id, deck_id }) {
@@ -49,6 +52,12 @@ async function topNCards({ N, user_id, deck_id }) {
 }
 
 // TODO: Review functionality
+
+function createBrowseElementWithStats(deck) {
+    const { percentages, deck_id: { _id, title, categories, cards }} = deck;
+    const terms = cards.length;
+    return { _id, title, categories, terms, percentages}
+}
 
 function studyBrowseDeckInfo(deck) {
     const { percentages, last_studied, deck_id: { _id, name, description, categories }} = deck;
