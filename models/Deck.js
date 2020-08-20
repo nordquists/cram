@@ -2,13 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DeckSchema = new Schema({
-    name: {
+    title: {
         type: String,
-        required: true
     },
     description: {
         type: String
     },
+    categories: [{
+        type: String
+    }],
     date_created: {
         type: Date,
         default: Date.now,
@@ -19,6 +21,10 @@ const DeckSchema = new Schema({
         ref: 'User',
         required: true
     },
+    creator_sub: {
+        type: String,
+        required: true
+    },
     piles: {
         type: mongoose.Schema.ObjectId
     },
@@ -26,28 +32,30 @@ const DeckSchema = new Schema({
         type: Boolean,
         default: true
     },
-    cards_num: {
+    last_edited: {
+        type: Date,
+        default: Date.now()
+    },
+    featured: {
+        type: Boolean,
+        default: false,
+    },
+    users: {
         type: Number,
-        required: true,
-        default: 0
+        default: 1
     },
     cards: [
         {
-            front: {
-                type: String
-            },
-            back: {
-                type: String
-            },
-            date_created: {
-                type: Date,
-                default: Date.now,
-                required: true
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Card',
         }
-    ]
+    ],
 });
 
-// TODO, add "tags" or "categories"
+DeckSchema.pre('update', function(next) {
+    var deck = this;
 
-module.exports = Deck = mongoose.model('deck', DeckSchema)
+    deck.last_edited = Date.now()
+});
+
+module.exports = Deck = mongoose.model('Deck', DeckSchema)

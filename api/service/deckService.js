@@ -270,7 +270,6 @@ async function synchronizeDeckStats(user_id, deck_id) {
     for (var deleted of d) {
         for (var index = 0; index < deckStats.cards.length; index++) {
             if (deckStats.cards[index]._card === deleted) {
-                console.log(deleted)
                 deckStats.cards.splice(index, 1);
             }
         }
