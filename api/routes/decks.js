@@ -5,20 +5,22 @@ const router = express.Router();
 // const Deck = require('../../models/Deck');
 const authorize = require('../middleware/authorize');
 // const Role = require('../miscellany/roles')
+const DeckStats = require('../../models/DeckStats');
+
 
 const deckService = require('../service/deckService');
+const deckServiceV2 = require('../service/deckServiceV2');
 const validateRequestSchema = require('../middleware/validateRequestSchema');
 const linkUser = require("../middleware/linkUser");
 
 
-// // our deck routes
+// our deck routes
 router.post('/', authorize.required, linkUser, createDeckSchema, createDeck);
 router.patch('/:id', authorize.required, editDeckSchema, editDeck);
-// router.get('/', authorize([Role.Admin]), getAllDecks);
 router.get('/:id', authorize.required, linkUser, getDeck);
 router.get('/stats/:id', authorize.required, linkUser, getStats);
-// router.get('/:id/stats', authorize(), getStats);
-
+router.patch('/stats/:id', authorize.required, linkUser, editStatsSchema, editStats);
+router.get('/study/:id', authorize.required, linkUser, getStudyStats);
 
 module.exports = router;
 
@@ -39,7 +41,7 @@ function createDeckSchema(req, res, next) {
 }
 
 function createDeck(req, res, next) {
-    deckService.newDeck({...req.body, user_id: req.user.sub })
+    deckServiceV2.newDeck({...req.body, user_sub: req.user.sub })
         .then(({ ...newDeck }) => {
             res.json(newDeck);
         })
@@ -48,7 +50,7 @@ function createDeck(req, res, next) {
 
 function editDeckSchema(req, res, next) {
     const schema = Joi.object({
-        name: Joi.string().empty(''),
+        title: Joi.string().empty(''),
         description: Joi.string().empty(''),
         is_private: Joi.boolean().empty(''),
         categories: Joi.array().items(Joi.string().empty('')),
@@ -64,15 +66,15 @@ function editDeckSchema(req, res, next) {
 }
 
 function editDeck(req, res, next) {
-    deckService.editDeck({request: req.body, deck_id: req.params.id, user_id: req.user.sub, role: req.user.role })
+    deckServiceV2.editDeck({request: req.body, deck_id: req.params.id, user_sub: req.user.sub, role: req.user.role })
         .then((editedDeck) => {
-            res.json(editedDeck);
+            res.json({ message: "successful"});
         })
         .catch(next);
 }
 
 function getDeck(req, res, next) {
-    deckService.getDeck({ deck_id: req.params.id, user_id: req.user.sub, role: req.user.role })
+    deckServiceV2.getDeck({ deck_id: req.params.id, user_sub: req.user.sub, type: req.body.type })
         .then((deck) => {
             res.json(deck);
         })
@@ -80,9 +82,85 @@ function getDeck(req, res, next) {
 }
 
 function getStats(req, res, next) {
-    deckService.getDeckStats({ deck_id: req.params.id, user_id: req.user.sub })
-        .then((stats) => {
-            res.json(stats);
+    deckServiceV2.getDeckStats({ deck_id: req.params.id, user_sub: req.user.sub })
+        .then(() => {
+            DeckStats.findOne({ deck_id: req.params.id, user_sub: req.user.sub })
+                .populate({
+                    path: 'deck_id',
+                    populate: {
+                        path: 'creator'
+                    }
+                })
+                .populate({
+                    path: 'cards._card',
+                })
+                .then((result) => {
+                    console.log(deckServiceV2.studyStatsInfo(result).cards);
+                })
+                .catch(next); 
+            DeckStats.findOne({ deck_id: req.params.id, user_sub: req.user.sub })
+                .populate({
+                    path: 'deck_id',
+                    populate: {
+                        path: 'creator'
+                    }
+                })
+                .populate({
+                    path: 'deck_id',
+                    populate: {
+                        path: 'cards'
+                    }
+                })
+                .then((result) => {
+                    console.log(deckServiceV2.statsInfo(result).cards)
+                    res.json(deckServiceV2.statsInfo(result));
+                })
+                .catch(next);                            
+        })
+        .catch(next);
+}
+
+function editStatsSchema(req, res, next) {
+    const schema = Joi.object({
+        cards: Joi.array().items(Joi.object({
+            _card: Joi.object({
+                _id: Joi.string()
+            }),
+            _id: Joi.string(),
+            days_between_review: Joi.number().allow(null),
+            times_studied: Joi.number().allow(null),
+            difficulty: Joi.number(),
+            last_studied: Joi.number().allow(null)
+        }))
+    });
+    validateRequestSchema(req, next, schema);
+}
+
+function editStats(req, res, next) {
+    deckServiceV2.editDeckStats({ deck_id: req.params.id, user_sub: req.user.sub, cards: req.body.cards })
+        .then(() => {
+            res.json({ message: "successful"});
+        })
+        .catch(next);
+}
+
+function getStudyStats(req, res, next) {
+    deckServiceV2.getDeckStats({ deck_id: req.params.id, user_sub: req.user.sub })
+        .then(() => {
+            DeckStats.findOne({ deck_id: req.params.id, user_sub: req.user.sub })
+                .populate({
+                    path: 'deck_id',
+                    populate: {
+                        path: 'creator'
+                    }
+                })
+                .populate({
+                    path: 'cards._card',
+                })
+                .then((result) => {
+                    res.json(deckServiceV2.studyStatsInfo(result));
+                })
+                .catch(next);                            
         })
         .catch(next);
 }
