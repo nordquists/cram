@@ -1,0 +1,36 @@
+.progress-bar {
+    background-color:  #E4E4E4;
+    height: 8px;
+    width: 97%;
+    border-radius: 4px;
+    margin: 20px;
+
+    margin-right: auto;
+    margin-left: auto;
+    position
+}
+
+.inner-bar {
+    background-color: #3A3A3A;
+    /*height: 100%;*/
+    border-radius: inherit;
+    transition: width 1000ms ease-in;
+    height: inherit;
+}
+
+#green-bar {
+    z-index: 3;
+    background-color: #7ACB5E;
+}
+
+#orange-bar {
+    z-index: 2;
+    background-color: #F1B458;
+    margin-top: -8px;
+}
+
+#red-bar {
+    z-index: 1;
+    background-color: #E88383;
+    margin-top: -8px;
+}

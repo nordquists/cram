@@ -121,15 +121,12 @@ async function getDeckStats({ user_sub, deck_id }) {
 async function editDeckStats({ user_sub, deck_id, cards }) {
     if(!isValidId(deck_id)) throw 'Deck not found';
 
-    // check if the user is authorized to access this deck
-    if (!deck.creator_sub === user_sub && deck.is_private) throw 'UnauthorizedError'; 
-
     // find the deck stats associated with the deck id and the user, if they exist
     let deckStats = await DeckStats.findOne({ deck_id: deck_id, user_sub: user_sub })
 
     // if there are no deck stats we have to create them first
     if (!deckStats) {
-        await initDeckStats({ user_id: user._id, deck_id: deck_id });
+        // await initDeckStats({ user_id: user._id, deck_id: deck_id });
         deckStats = await DeckStats.findOne({ deck_id: deck_id, user_id: user._id });
     }
 
@@ -143,10 +140,12 @@ async function editDeckStats({ user_sub, deck_id, cards }) {
             }
         }
     })
+
+    deckStats.times_studied = deckStats.times_studied + 1;
     await deckStats.save();
 
     // helper to update our derived data
-    await updateDerived(deck_id, user_sub)
+    await updateDerived(deck_id, user_sub);
 }
 
 // helpers ------
@@ -186,8 +185,7 @@ async function updateDerived(deck_id, user_sub) {
         deckStats.percentages.orange = orange / percentage_total;
         deckStats.percentages.red = red / percentage_total;
         deckStats.due = due;
-
-        deckStats.times_studied = deckStats.times_studied + 1;
+       
         deckStats.last_studied = Date.now();
         await deckStats.save();
     }
@@ -280,9 +278,9 @@ function studyStatsInfo(stats) {
 }
 
 function deckInfo(deck, user_id) {
-    const { title, description, categories, creator, cards } = deck;
+    const { title, description, categories, creator, cards, is_private } = deck;
     const is_owner = creator.equals(user_id);
-    return { title, description, categories, creator, cards, is_owner };
+    return { title, description, categories, creator, cards, is_owner, is_private };
 }
 
 function compareDecks(a, b) {

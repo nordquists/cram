@@ -1,0 +1,56 @@
+{
+  "name": "cram-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@auth0/auth0-react": "^1.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "bad-words": "^3.0.3",
+    "formik": "^2.1.5",
+    "lodash": "^4.17.20",
+    "lodash-es": "^4.17.15",
+    "lodash-move": "^1.1.1",
+    "nodemon": "^2.0.4",
+    "react": "^16.13.1",
+    "react-autosize-textarea": "^7.1.0",
+    "react-beautiful-dnd": "^13.0.0",
+    "react-content-loader": "^5.1.0",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-media-hook": "^0.4.7",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "react-spring": "^9.0.0-beta.32",
+    "react-transition-group": "^4.4.1",
+    "react-use-auth": "^0.7.5",
+    "react-use-gesture": "^7.0.15",
+    "styled-components": "^5.1.1",
+    "styled-media-query": "^2.1.2",
+    "yup": "^0.29.3"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development react-scripts start",
+    "build": "NODE_ENV=production react-scripts build",
+    "test": "NODE_ENV=testing react-scripts test",
+    "eject": "NODE_ENV=eject react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:5000"
+}

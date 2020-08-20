@@ -8,7 +8,7 @@ const authorize = require('../middleware/authorize');
 const DeckStats = require('../../models/DeckStats');
 
 
-const deckService = require('../service/deckService');
+const studyService = require('../service/studyService');
 const deckServiceV2 = require('../service/deckServiceV2');
 const validateRequestSchema = require('../middleware/validateRequestSchema');
 const linkUser = require("../middleware/linkUser");
@@ -83,21 +83,7 @@ function getDeck(req, res, next) {
 
 function getStats(req, res, next) {
     deckServiceV2.getDeckStats({ deck_id: req.params.id, user_sub: req.user.sub })
-        .then(() => {
-            DeckStats.findOne({ deck_id: req.params.id, user_sub: req.user.sub })
-                .populate({
-                    path: 'deck_id',
-                    populate: {
-                        path: 'creator'
-                    }
-                })
-                .populate({
-                    path: 'cards._card',
-                })
-                .then((result) => {
-                    console.log(deckServiceV2.studyStatsInfo(result).cards);
-                })
-                .catch(next); 
+        .then(() => { 
             DeckStats.findOne({ deck_id: req.params.id, user_sub: req.user.sub })
                 .populate({
                     path: 'deck_id',
@@ -112,7 +98,6 @@ function getStats(req, res, next) {
                     }
                 })
                 .then((result) => {
-                    console.log(deckServiceV2.statsInfo(result).cards)
                     res.json(deckServiceV2.statsInfo(result));
                 })
                 .catch(next);                            
@@ -139,14 +124,6 @@ function editStatsSchema(req, res, next) {
 function editStats(req, res, next) {
     deckServiceV2.editDeckStats({ deck_id: req.params.id, user_sub: req.user.sub, cards: req.body.cards })
         .then(() => {
-            res.json({ message: "successful"});
-        })
-        .catch(next);
-}
-
-function getStudyStats(req, res, next) {
-    deckServiceV2.getDeckStats({ deck_id: req.params.id, user_sub: req.user.sub })
-        .then(() => {
             DeckStats.findOne({ deck_id: req.params.id, user_sub: req.user.sub })
                 .populate({
                     path: 'deck_id',
@@ -160,122 +137,19 @@ function getStudyStats(req, res, next) {
                 .then((result) => {
                     res.json(deckServiceV2.studyStatsInfo(result));
                 })
-                .catch(next);                            
+                .catch(next);  
         })
         .catch(next);
 }
 
-// // temporarily public while setting up
-
-// // @ route GET api/decks
-// // @ desc Get all decks belonging to the user
-// // @ access private
-// router.get('/', authorize(), async (req, res) => {
-//     try {
-//         const queryObj = { ...req.query };
-//         const excludedFields = ['page', 'sort', 'limit', 'fields'];
-
-//         //  delete the excluded fields
-//         excludedFields.forEach(element => delete queryObj[element]);
-
-//         // find documents in database
-//         let query = Deck.find(queryObj);
-
-//         // sort
-//         if (req.query.sort) {
-//             const sortBy = req.query.sort.split(',').join(' ');
-//             query = query.sort(sortBy);
-//         }
-
-//         // allow request to only certain fields
-//         if (req.query.fields) {
-//             const fields = req.query.fields.split(',').join(' ');
-//             query = query.select(fields);
-//         } else {
-//             query = query.select('-__v');
-//         }
-
-//         // pagination
-//         const page = req.query.page * 1 || 1;
-//         const limit = req.query.limit * 1 || 100;
-//         const skip = (page - 1) * limit;
-
-//         query = query.skip(skip).limit(limit);
-
-//         if (req.query.page) {
-//             const numDecks = await Deck.countDocuments();
-//             if (skip >= numDecks) throw new Error('This page does not exist');
-//         }
-
-//         // send query
-//         const decks = await query;
-
-//         const response = {
-//             status: true,
-//             count: decks.length,
-//             data: { decks }
-//         }
-
-//         res.status(200).json(response);
-//     } catch (err) {
-//         res.status(404).json({
-//             status: false,
-//             message: err
-//         });
-//     }
-// });
-
-// // @ route POST api/decks
-// // @ desc Create a new deck
-// // @ access private
-// router.post('/', authorize(), (req, res) => {
-//     const newDeck = Deck({
-//         name: req.body.name,
-//         description: req.body.description,
-//         cards: req.body.cards,
-//         categories: req.body.categories,
-//         is_private: req.body.is_private,
-//         creator: req.user.id,
-//     });
-//     newDeck.save().then(deck => res.status(201).json(deck));
-// });
-
-// // @ route GET api/decks/:id
-// // @ desc Get a deck by id
-// // @ access private
-// router.get('/:id', authorize(), (req, res) => {
-//     Deck.findById(req.params.id)
-//         .then(deck => {
-//             if (!deck.is_private) return res.status(200).json(deck)
-//             if (deck.creator == req.user.id) return res.status(200).json(deck)
-//             return res.sendStatus(403)
-//         })
-//         .catch(err => res.status(404).json({error: err}));
-// });
-
-// // @ route PATCH api/decks/:id
-// // @ desc Patch a deck by id
-// // @ access private
-// router.patch('/:id', authorize(), (req, res) => {
-//     Deck.findById(req.params.id)
-//     .then(deck => {
-//         if (deck.creator == req.user.id) {
-//             Deck.updateOne({ _id: req.params.id },{ $set: req.body })
-//             .then(deck => res.json(deck))
-//             // .catch(err => res.status(404).json({status: false}));
-//         }
-//         return res.sendStatus(403)
-//     })
-//     .catch(err => res.status(404).json({error: err}));
-
-    
-// });
-
-// // @ route DELETE api/decks/:id
-// // @ desc Delete a deck
-// // @ access private
-// router.delete('/:id', authorize(), (req, res) => {
-//     Deck.findById(req.params.id)
-//         .then(item => item.remove().then(() => res.json({status: true})))
-//         .catch(err => res.status(404).json({status: false, error: err}));
-// });
+function getStudyStats(req, res, next) {
+    deckServiceV2.getDeckStats({ deck_id: req.params.id, user_sub: req.user.sub })
+        .then(() => {
+            studyService.getToStudy({ deck_id: req.params.id, user_sub: req.user.sub })
+                .then(result => {
+                    res.json(result);
+                })
+                .catch(next);                           
+        })
+        .catch(next);
+}

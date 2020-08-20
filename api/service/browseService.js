@@ -1,11 +1,10 @@
 const Deck = require('../../models/Deck');
 const DeckStats = require('../../models/DeckStats');
-const { JwksRateLimitError } = require('jwks-rsa');
 const { topNDueDecks } = require('./studyService');
 
 CATEGORY_ROTATION = "Jeopardy"
 
-RECENT_WINDOW = 
+RECENT_WINDOW = 4
 VIEW_ALL_LIMIT = 4
 
 module.exports = {

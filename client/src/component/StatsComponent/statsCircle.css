@@ -1,0 +1,94 @@
+.stats {
+    display: flex;
+    flex-direction: row;
+}
+
+.stats-label {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+    font-weight: 300;
+    /* font-size: 2rem; */
+    width: 2rem;
+}
+
+.stats-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.stats-circle {
+    display: block;
+    width: 100px;
+    justify-content: space-around;
+
+}
+
+.circular-chart {
+    display: block;
+    /* margin: 10px auto; */
+    /* max-width: 80%;
+    max-height: 250px; */
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 4;
+}
+
+.circle-bg.m {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 7;
+}
+
+.circle-bg.l {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 10;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+.circle.m {
+    fill: none;
+    stroke-width: 7;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+.circle.l {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+
+.circle.green {
+    stroke: #7ACB5E;
+}
+
+.circle.orange {
+    stroke: #F1B458;
+}
+
+.circle.red {
+    stroke: #E88383;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.circular-chart .internal-label {
+    font-weight: 400;
+    font-size: 0.5rem;
+    text-anchor: middle;
+}
