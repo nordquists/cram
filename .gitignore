@@ -1,3 +1,9 @@
+# Project dependencies
+.cache
 node_modules
 
+# Other
 .DS_Store
+yarn-error.log
+.idea
+
