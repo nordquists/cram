@@ -33,9 +33,4 @@ app.use(errorHandler);
 
 app.set('port', process.env.PORT || 5000)
 
-// env var is for deploying to Heroku
-// const PORT = process.env.PORT || 5000;
-// // starting server
-// app.listen(PORT, () => console.log(`SERVER : Server running in ${process.env.NODE_ENV} on port ${PORT}`));
-
 module.exports = app;
