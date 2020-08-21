@@ -12,7 +12,7 @@ const env = process.env.NODE_ENV; // current environment
 // axios.defaults.baseURL = window.location.host;
 
 const redirectUri = env === 'production' 
-                          ? 'https://usecram.com/check-login'
+                          ? 'https://www.usecram.com/check-login'
                           : 'http://localhost:3000/check-login'
 
 const App = () => {
