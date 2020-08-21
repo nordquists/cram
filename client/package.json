@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bad-words": "^3.0.3",
+    "cross-env": "^7.0.2",
     "formik": "^2.1.5",
     "lodash": "^4.17.20",
     "lodash-es": "^4.17.15",
