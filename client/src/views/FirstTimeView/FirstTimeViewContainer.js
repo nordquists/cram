@@ -5,7 +5,7 @@ import { LoadingSpinner } from '../../component/LoadingComponent/LoadingSpinner'
 import { useApi } from '../../hooks/useAPI';
 
 export const FirstTimeViewContainer = (props) => {
-    const { loading, data, error } = useApi('/users/check-login');
+    const { loading, data, error } = useApi('/api/users/check-login');
 
     return (
         <div>
@@ -14,7 +14,7 @@ export const FirstTimeViewContainer = (props) => {
             }
             {(!loading && !data.new) && <Redirect to={'/'}/>}
             {loading && <LoadingSpinner/>}
-            {error && <Redirect to={'/'}/>}
+            {error && <Redirect to={'/unexpected'}/>}
         </div>
     )
 }

@@ -10,7 +10,7 @@ const named_views = ['Recent decks', 'Top decks', 'Featured decks', 'My decks']
 export const ViewAllViewController = (props) => {
     let invalid_url = false;
     let index = -1;
-    const { loading, data, error } = useApi('/browse/' + props.location.pathname.slice(1));
+    const { loading, data, error } = useApi('/api/browse/' + props.location.pathname.slice(1));
     
     for (var i = 0; i < named_views.length; i++) {
         if (valid_views[i] === props.location.pathname) {

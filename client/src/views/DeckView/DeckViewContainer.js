@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 export const DeckViewContainer = (props) => {
     const id = props.match.params.deck_id;
-    const { loading, data, error } = useApi('/decks/stats/'.concat(id));
+    const { loading, data, error } = useApi('/api/decks/stats/'.concat(id));
 
     return (
         <div>

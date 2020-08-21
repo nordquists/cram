@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { useApi } from '../../hooks/useAPI';
 
 export const StudyBrowseViewContainer = () => {
-    const { loading, data, error } = useApi('/browse/study');
+    const { loading, data, error } = useApi('/api/browse/study');
 
     return (
         <div>

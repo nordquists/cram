@@ -5,7 +5,7 @@ import { useApi } from '../../hooks/useAPI';
 
 export const EditViewContainer = (props) => {
     const id = props.match.params.deck_id;
-    const { loading, data, error } = useApi('/decks/'.concat(id));
+    const { loading, data, error } = useApi('/api/decks/'.concat(id));
 
     if (!loading && !error) {
         for (const card of data.cards) {

@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { BrowseViewLoader } from './BrowseViewLoader';
 
 export const BrowseViewContainer = () => {
-    const { loading, data, error } = useApi('/browse');
+    const { loading, data, error } = useApi('/api/browse');
 
     return (
         <div>
