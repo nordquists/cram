@@ -4,7 +4,7 @@ import { LoadingSpinner } from '../LoadingComponent/LoadingSpinner';
 import { useApi } from '../../hooks/useAPI';
 
 export const LoginCheck = () => {
-    const { loading, data, error } = useApi('/users/check-login');
+    const { loading, data, error } = useApi('/api/users/check-login');
     return (
         <div>
             {(!error && !loading) && <Redirect to={data.new ? '/welcome' : '/'}/>}
