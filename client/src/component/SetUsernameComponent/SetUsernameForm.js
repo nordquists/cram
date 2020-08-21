@@ -57,7 +57,7 @@ export const SetUsernameForm = ({ history }) => {
 
         axios({
             method: 'post',
-            url: '/users/username',
+            url: '/api/users/username',
             data: {username: trimmedUsername},
             headers: {
                 'Authorization': `Bearer ${accessToken}`

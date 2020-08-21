@@ -67,7 +67,7 @@ export const EditView = ({ id, loading, data, error, history }) => {
 
         axios({
             method: 'patch',
-            url: '/decks/'.concat(id),
+            url: '/api/decks/'.concat(id),
             data: data,
             headers: {
                 'Authorization': `Bearer ${accessToken}`

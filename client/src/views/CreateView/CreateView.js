@@ -65,7 +65,7 @@ export const CreateView = ({ history }) => {
 
         axios({
             method: 'post',
-            url: '/decks/',
+            url: '/api/decks/',
             data: data,
             headers: {
                 'Authorization': `Bearer ${accessToken}`

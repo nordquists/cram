@@ -160,7 +160,7 @@ export const useStudy = function(deck_id) {
 
         axios({
             method: 'get',
-            url: '/decks/study/'.concat(deck_id),
+            url: '/api/decks/study/'.concat(deck_id),
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             },
@@ -191,7 +191,7 @@ export const useStudy = function(deck_id) {
 
         axios({
             method: 'patch',
-            url: '/decks/stats/'.concat(deck_id),
+            url: '/api/decks/stats/'.concat(deck_id),
             data: {
                 cards: state.set
             },
