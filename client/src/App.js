@@ -12,7 +12,7 @@ axios.defaults.baseURL =  env === 'production'
                           : 'http://localhost:5000/api/'; // development
 
 const redirectUri = env === 'production' 
-                          ? 'http://localhost:3000/check-login'
+                          ? 'https://usecram.herokuapp.com/check-login'
                           : 'http://localhost:3000/check-login'
 
 const App = () => {
