@@ -87,8 +87,8 @@ export const Footer = () => {
                     We're here to make learning easier.
                 </SectionSubtitle>
                 <Links>
-                    <Link>Github</Link>
-                    <Link>Contact</Link>
+                    <Link href="https://github.com/nordquists/cram">Github</Link>
+                    <Link href="mailto:info@usecram.com">Contact</Link>
                 </Links>
             </Wrapper>
         </ColorSection>

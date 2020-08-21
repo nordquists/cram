@@ -5,7 +5,7 @@ const { topNDueDecks } = require('./studyService');
 CATEGORY_ROTATION = "Jeopardy"
 
 RECENT_WINDOW = 4
-VIEW_ALL_LIMIT = 4
+VIEW_ALL_LIMIT = 10
 
 module.exports = {
     browseDecks,
@@ -104,19 +104,19 @@ async function browseDecks({ user_id }) {
     table.rows = [];
     
     // search for the decks that are featured
-    var decks = await Deck.find({ featured: true, is_private: false }).limit(VIEW_ALL_LIMIT);
+    var decks = await Deck.find({ featured: true, is_private: false }).limit(4);
     // if a user is asking, add stats to the decks if they have them
     if (user_id) var formattedDecks = await addFormattedStats(decks, user._id);
     // otherwise, just format
     else var formattedDecks = addFormatted(decks);
     table.rows.push(createRow(formattedDecks, "Featured Decks", "/featured"))
 
-    decks = await Deck.find({ is_private: false }).sort({users: -1}).limit(VIEW_ALL_LIMIT);
+    decks = await Deck.find({ is_private: false }).sort({users: -1}).limit(4);
     if (user_id) formattedDecks = await addFormattedStats(decks, user._id);
     else formattedDecks = addFormatted(decks);
     table.rows.push(createRow(formattedDecks, "Most Popular Decks", "/top"))
     
-    decks = await Deck.find({ categories: CATEGORY_ROTATION, is_private: false }).limit(VIEW_ALL_LIMIT);
+    decks = await Deck.find({ categories: CATEGORY_ROTATION, is_private: false }).limit(4);
     if (user_id) formattedDecks = await addFormattedStats(decks, user._id);
     else formattedDecks = addFormatted(decks);
     table.rows.push(createRow(formattedDecks, CATEGORY_ROTATION))

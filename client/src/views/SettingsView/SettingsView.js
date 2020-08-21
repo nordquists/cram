@@ -93,7 +93,7 @@ export const SettingsView = ({ history }) => {
                         Hey, thanks for using Cram!
                     </Subtitle>
                     <Text>
-                        If you want to request a feature or report any bugs feel free to email <Email href="mailto:bugs@nordquists.com">bugs@nordquists.com</Email>.
+                        If you want to request a feature or report any bugs feel free to email <Email href="mailto:bugs@usecram.com">bugs@usecram.com</Email>.
                     </Text>
                 </Bugs>
             </Settings>
