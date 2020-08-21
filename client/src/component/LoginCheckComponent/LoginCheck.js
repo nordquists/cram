@@ -7,8 +7,9 @@ export const LoginCheck = () => {
     const { loading, data, error } = useApi('/users/check-login');
     return (
         <div>
-            {!loading && <Redirect to={data.new ? '/welcome' : '/'}/>}
+            {(!error && !loading) && <Redirect to={data.new ? '/welcome' : '/'}/>}
             {loading && <LoadingSpinner/>}
+            {error && <Redirect to={'/'}/>}
         </div>
     )
 }

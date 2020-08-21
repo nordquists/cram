@@ -9,11 +9,12 @@ export const FirstTimeViewContainer = (props) => {
 
     return (
         <div>
-            {(!loading && data.new) && 
+            {(!error && !loading && data.new) && 
                 <FirstTimeView history={props.history}/>
             }
             {(!loading && !data.new) && <Redirect to={'/'}/>}
             {loading && <LoadingSpinner/>}
+            {error && <Redirect to={'/'}/>}
         </div>
     )
 }
