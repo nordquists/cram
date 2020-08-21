@@ -9,6 +9,8 @@ const env = process.env.NODE_ENV; // current environment
 
 axios.defaults.baseURL = process.env.baseURL || 'http://localhost:5000/api/'
 
+axios.defaults.baseURL = window.location.host;
+
 const redirectUri = env === 'production' 
                           ? 'https://usecram.herokuapp.com/check-login'
                           : 'http://localhost:3000/check-login'
