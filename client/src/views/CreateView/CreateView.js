@@ -119,6 +119,7 @@ export const CreateView = ({ history }) => {
                         .max(24, "Title should be no longer than 24 characters")
                         .required('Your deck needs a title.'),
                     description: Yup.string(),
+                    cards: Yup.array().required()
                 })}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     handleSubmit(values, setSubmitting)

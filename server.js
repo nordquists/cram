@@ -1,4 +1,5 @@
 // Load config first thing
+import sslRedirect from 'heroku-ssl-redirect';
 const dotenv = require('dotenv').config({path: 'config/config.env'});
 const express = require('express');
 const mongoose = require('mongoose');
@@ -17,6 +18,7 @@ const app = express();
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 // activate cors
+app.use(sslRedirect());
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cookieParser());

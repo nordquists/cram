@@ -33,10 +33,18 @@ const Label = styled.label`
 const Flex = styled.div`
     display: flex;
     flex-direction: row;
+    ${media.lessThan("small")`
+        flex-direction: column;
+    `}
 `
 
 const PrivacyWrapper = styled.div`
     margin-left: 20px;
+
+    ${media.lessThan("small")`
+        margin-left: 0;
+        margin-top:20px;
+    `}
 `
 
 export const CreateForm = ({ values }) => {
@@ -59,6 +67,7 @@ export const CreateForm = ({ values }) => {
                     placeholder="Add a description"
                 />
                 <PrivacyWrapper>
+                    <FormSpacing/>
                     <UICheckbox 
                         label="Keep deck private?"
                         name="is_private" 

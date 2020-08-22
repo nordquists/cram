@@ -179,7 +179,7 @@ export const Showcase = () => {
                                 Spaced Repetition Algorithm
                             </SectionTitle>
                             <SectionSubtitle>
-                                Make quick progress and stretch your memory.
+                                Data-driven and evidence-backed approach to efficient memorization.
                             </SectionSubtitle>
                         </TitleWrapper>
                         <FlashcardWrapper>

@@ -17,6 +17,7 @@ import { NotFoundView } from './views/ErrorViews/NotFoundView';
 import { UnexpectedView } from './views/ErrorViews/UnexpectedView';
 import { ViewAllViewController } from './views/ViewAllView/ViewAllViewController';
 import {Helmet} from "react-helmet";
+import { LoadingSpinner } from './component/LoadingComponent/LoadingSpinner';
 
 const ProtectedRoute = ({ component, ...args }) => {
     return <Route component={withAuthenticationRequired(component)} {...args} />
@@ -32,7 +33,9 @@ const Layout = () => {
                 <title>Cram</title>
                 <link rel="canonical" href="http://usecram.com/" />
             </Helmet>
-
+            {isLoading &&
+                <LoadingSpinner/>
+            }
             {error &&
                 <Redirect to="/"/>
             }
