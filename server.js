@@ -1,8 +1,6 @@
 // Load config first thing
-import sslRedirect from 'heroku-ssl-redirect';
 const dotenv = require('dotenv').config({path: 'config/config.env'});
 const express = require('express');
-const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -18,7 +16,6 @@ const app = express();
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 // activate cors
-app.use(sslRedirect());
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cookieParser());
@@ -26,6 +23,16 @@ app.use(cors());
 
 // Connect to database
 connectDB();
+
+// Redirect non ssl connections to https
+if(process.env.NODE_ENV === 'production') {
+    app.use((req, res, next) => {
+      if (req.header('x-forwarded-proto') !== 'https')
+        res.redirect(`https://${req.header('host')}${req.url}`)
+      else
+        next()
+    })
+  }
 
 // Tell app to use api
 app.use('/api/decks', require('./api/routes/decks'));
