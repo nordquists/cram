@@ -1,3 +1,11 @@
+<br/>
+<p align="center">
+    <a href="https://www.usecram.com" target="_blank">
+        <img width="50%" src="https://www.usecram.com/logo600x300.png" alt="Cram logo">
+    </a>
+</p>
+
+<br/>
 <p align="center">
     <a href="https://github.com/nordquists/cram/releases" target="_blank">
         <img src="https://img.shields.io/github/v/release/nordquists/cram" alt="Release tag">
@@ -7,13 +15,7 @@
 
 [Cram](https://www.usecram.com) is the simple and intuitive memory tool I wish I had before. It is a responsive web application designed for mobile, tablet, and desktop users alike. Cram is written in **JavaScript using React for the front-end and Node.js for the back-end**. 
 
-Curious about Cram? Have a look at [Cram's website](https://www.usecram.com) for more information and demos.
-
-
-This repository contains all the co
-
-
-If you want to build off of Cram feel free to fork the repository. 
+Curious about Cram? Have a look at [Cram's website](https://www.usecram.com) for more information and demos. If you want to build off of Cram feel free to fork the repository. 
 
 
 ## Demonstration 
