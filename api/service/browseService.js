@@ -119,7 +119,7 @@ async function browseDecks({ user_id }) {
     decks = await Deck.find({ categories: CATEGORY_ROTATION, is_private: false }).limit(4);
     if (user_id) formattedDecks = await addFormattedStats(decks, user._id);
     else formattedDecks = addFormatted(decks);
-    table.rows.push(createRow(formattedDecks, CATEGORY_ROTATION))
+    table.rows.push(createRow(formattedDecks, "Get Jeopardy Ready"))
     
     return table; 
 }
