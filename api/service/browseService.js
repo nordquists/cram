@@ -53,6 +53,13 @@ async function recentDecks({ user_id, limit }) {
                                         .populate('deck_id')
                                         .limit(limit);
 
+    for (const deck of recent) {
+        if (!deck.deck_id) {
+            DeckStats.deleteOne({ _id: deck._id })
+                .then(result => {})
+        }
+    }
+
     return {
         decks: recent.map(deck => createBrowseElementWithStats(deck))
     }

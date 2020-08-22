@@ -39,7 +39,7 @@ app.use('/api/decks', require('./api/routes/decks'));
 app.use('/api/browse', require('./api/routes/browse'));
 app.use('/api/users', require('./api/routes/usersV2'));
 
-app.use(errorHandler); 
+// app.use(errorHandler); 
 
 app.set('port', process.env.PORT || 5000);
 
