@@ -2,7 +2,7 @@
 <p align="center">
     <a href="https://www.usecram.com" target="_blank">
         <img width="50%" src="https://www.usecram.com/logo600x300.png" alt="Cram logo">
-    </a>
+    </a
 </p>
 
 <br/>
@@ -20,9 +20,13 @@ Curious about Cram? Have a look at [Cram's website](https://www.usecram.com) for
 
 ## Demonstration 
 
+<p align="center">
+        <img width="50%" src="https://www.usecram.com/FlashcardDemo.gif" alt="Cram flashcards">
+        <img width="50%" src="https://www.usecram.com/MenuDemo.gif" alt="Cram menu">
+</p>
 
 ## Technologies Used
-
+The main three tools I used to make this application are React.js, Node.js, and MongoDB. I used Figma for design. 
 
 ## Have a question? Found a bug? Need help?
 

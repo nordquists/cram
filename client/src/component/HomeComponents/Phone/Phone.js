@@ -13,7 +13,8 @@ const PhoneBody = styled.div`
     width: 315px;
 
     overflow: hidden;
-
+    position: relative;
+    height: 100%;
 
     ${media.lessThan("940px")`
         height: 600px;
@@ -28,7 +29,6 @@ const PhoneBody = styled.div`
 export const Phone = () => {
     return (
         <PhoneBody>
-
             <ReactPlayer
                     className='react-player'
                     url='/CramDemoHD.mp4'
