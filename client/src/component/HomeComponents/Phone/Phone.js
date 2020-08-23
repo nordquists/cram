@@ -36,6 +36,7 @@ export const Phone = () => {
                     muted={true}
                     controls={false}
                     playing={true}
+                    playsinline={true}
                     />
         </PhoneBody>
     )
