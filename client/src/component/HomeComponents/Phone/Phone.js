@@ -14,7 +14,6 @@ const PhoneBody = styled.div`
 
     overflow: hidden;
     position: relative;
-    height: 100%;
 
     ${media.lessThan("940px")`
         height: 600px;

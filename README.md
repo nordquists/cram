@@ -21,8 +21,8 @@ Curious about Cram? Have a look at [Cram's website](https://www.usecram.com) for
 ## Demonstration 
 
 <p align="center">
-        <img width="50%" src="https://www.usecram.com/FlashcardDemo.gif" alt="Cram flashcards">
-        <img width="50%" src="https://www.usecram.com/MenuDemo.gif" alt="Cram menu">
+        <img width="50%" src="/client/public/FlashcardDemo.gif" alt="Cram flashcards">
+        <img width="50%" src="/client/public/MenuDemo.gif" alt="Cram menu">
 </p>
 
 ## Technologies Used
