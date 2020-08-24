@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 import media from "styled-media-query";
-import ReactPlayer from 'react-player'
 
 const PhoneBody = styled.div`
     background: #FFFFFF;
@@ -28,7 +27,11 @@ const PhoneBody = styled.div`
 export const Phone = () => {
     return (
         <PhoneBody>
-            <ReactPlayer
+            <video autoPlay loop playsInline webKit-PlaysInline x5-PlaysInline muted preload="auto" style={{width: "100%", height: "100%"}}>
+                <source src="/CramDemoHD.mp4" type="video/mp4" />
+                <source src="/CramDemoHD.webm" type="video/webm" />
+            </video>
+            {/* <ReactPlayer
                     className='react-player'
                     url='/CramDemoHD.mp4'
                     width='100%'
@@ -37,7 +40,7 @@ export const Phone = () => {
                     controls={false}
                     playing={true}
                     playsinline={true}
-                    />
+                    /> */}
         </PhoneBody>
     )
 }
