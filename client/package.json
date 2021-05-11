@@ -11,7 +11,7 @@
     "bad-words": "^3.0.3",
     "cross-env": "^7.0.2",
     "formik": "^2.1.5",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "lodash-es": "^4.17.15",
     "lodash-move": "^1.1.1",
     "nodemon": "^2.0.4",
